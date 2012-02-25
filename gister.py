@@ -7,7 +7,7 @@
 #
 #* Creation Date : 16-02-2012
 #
-#* Last Modified : Sat 25 Feb 2012 05:00:01 PM EET
+#* Last Modified : Sat 25 Feb 2012 09:54:15 PM EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -58,9 +58,18 @@ def main():
 
     br.form["description"] = desc
     br.form["file_name[gistfile1]"] = filename
-    
-    if ( not ext == "" ):
+
+    extensions = []
+    for control in br.form.controls:
+        if control.name == "file_ext[gistfile1]":
+            for item in control.items:
+                extensions.append(item.attrs['value'])
+
+    if ext in extensions:
         br.form["file_ext[gistfile1]"] = ["."+ext]
+    else:
+        br.form["file_ext[gistfile1]"] = [".txt"]
+
     br.form["file_contents[gistfile1]"] = text
 
     br.submit()

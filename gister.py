@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2
 #/* -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.
 #
 #* File Name : gister.py
@@ -7,7 +7,7 @@
 #
 #* Creation Date : 16-02-2012
 #
-#* Last Modified : Sat 25 Feb 2012 04:47:59 PM EET
+#* Last Modified : Sat 25 Feb 2012 04:58:54 PM EET
 #
 #* Created By : Greg Liras <gregliras@gmail.com>
 #
@@ -23,7 +23,11 @@ from config import username,password
 
 
 def main():
-    filename = sys.argv[1]
+    try:
+        filename = sys.argv[1]
+    except IndexError:
+        print "Usage: %s filename"%sys.argv[0]
+        exit(1)
     broken = filename.split(".")
     if ( len( broken ) == 1 ):
         ext = ""

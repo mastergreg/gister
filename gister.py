@@ -1,21 +1,16 @@
 #!/usr/bin/python2
 #/* -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.
-#
 #* File Name : gister.py
-#
-#* Purpose :
-#
+#* Purpose : Tool to upload files to gist
 #* Creation Date : 16-02-2012
-#
-#* Last Modified : Sat 25 Feb 2012 09:54:15 PM EET
-#
+#* Last Modified : Sat 02 Jun 2012 09:42:59 PM EEST
 #* Created By : Greg Liras <gregliras@gmail.com>
-#
 #_._._._._._._._._._._._._._._._._._._._._.*/
 
 import mechanize
 import cookielib
 import sys
+import readline
 from config import username,password
 
 
@@ -53,8 +48,7 @@ def main():
     br.submit()
     
     br.select_form( nr = 1 ) 
-    print "Tell me the description"
-    desc = raw_input()
+    desc = raw_input("Tell me the description: ")
 
     br.form["description"] = desc
     br.form["file_name[gistfile1]"] = filename
